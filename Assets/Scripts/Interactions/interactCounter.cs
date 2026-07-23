@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class InteractCounter : MonoBehaviour, IInteractable
 {
-    int num = 0;
+    CollectableTracker _collectableTracker;
+  
     void Start()
     {
-       num = 0; 
+        _collectableTracker = FindAnyObjectByType<CollectableTracker>();
+        _collectableTracker.setCurrentNumber(0);
+
     }
     public void Interact(Collider col)
     {
-        Debug.Log(num++);;
+        _collectableTracker.addCurrentNumber(1);
+        Debug.Log(_collectableTracker.getCurrentNumber());
+        this.gameObject.SetActive(false);
     }
 }

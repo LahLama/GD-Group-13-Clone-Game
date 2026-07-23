@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CollectableTrackr : MonoBehaviour
+public class CollectableTracker : MonoBehaviour
 {
     public int maxNumber = 30;
     int _currentNumber = 0;
@@ -13,6 +13,10 @@ public class CollectableTrackr : MonoBehaviour
     public void addCurrentNumber(int val)
     {
         _currentNumber = _currentNumber+ val;
+    }
+    public void setCurrentNumber(int val)
+    {
+        _currentNumber = val;
     }
 
     public int getCurrentNumber()
