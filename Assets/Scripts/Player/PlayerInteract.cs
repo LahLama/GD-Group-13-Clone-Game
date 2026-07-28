@@ -21,7 +21,8 @@ public class PlayerInteract : MonoBehaviour
     }
     void OnDisable()
     {
-        inputActions.Disable();
+  
+          inputActions.Disable();
     }
     void Update()
     {
