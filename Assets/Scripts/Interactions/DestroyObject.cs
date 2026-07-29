@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class InteractCounter : MonoBehaviour, IInteractable
+public class DestroyObject : MonoBehaviour
 {
     CollectableTracker _collectableTracker;
   
     void Start()
     {
         _collectableTracker = FindAnyObjectByType<CollectableTracker>();
-        _collectableTracker.setCurrentNumber(0);
+      
 
     }
-    public void Interact(Collider col)
+    public void Remove(Collider col)
     {
         _collectableTracker.addCurrentNumber(1);
         Debug.Log(_collectableTracker.getCurrentNumber());

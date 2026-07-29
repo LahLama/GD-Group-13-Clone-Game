@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: be564c766c2a89b4f93f17a4043acf50
   - enabled: 1
+    path: Assets/Scenes/Forest Intergration.unity
+    guid: 1bda2d51f676b2e47be4af0e17d6d2c6
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PlayerMovementAndInteraction.unity
     guid: 8b5e4c3deb7fd864eb20e3a40b154581
   m_configObjects:
