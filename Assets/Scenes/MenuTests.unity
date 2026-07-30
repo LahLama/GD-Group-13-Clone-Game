@@ -710,8 +710,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ac2807d18ac2e48a1f4f4f171e3807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  smallScale: 0.1
   walkMod: 1
   sprintMod: 4
+  jumpForce: 8
+  gravity: -9.8
+  crouchSpeed: 8
+  camOffset: 0
+  mainCamera: {fileID: 651204069}
 --- !u!143 &1371822764
 CharacterController:
   m_ObjectHideFlags: 0

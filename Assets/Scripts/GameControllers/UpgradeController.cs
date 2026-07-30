@@ -13,4 +13,14 @@ public class UpgradeController : MonoBehaviour
     {
         
     }
+
+    // Carry Capacity
+
+    // Magnet
+
+    // X-ray
+
+    // Range
+
+    // Movement
 }
