@@ -9,6 +9,8 @@ public class PauseController : MonoBehaviour
     {
         movement = FindAnyObjectByType<PlayerMovement>();
         look = FindAnyObjectByType<PlayerLook>();
+
+        SetPause(false);
     }
 
     public static bool IsPaused { get; private set; } = false;
