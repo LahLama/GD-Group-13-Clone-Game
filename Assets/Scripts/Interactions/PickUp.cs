@@ -2,17 +2,18 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour, IInteractable
 {
-    public GameObject playerHand;
     
     InventoryManager inventoryManager;
 
     void Start()
     {        
-        playerHand = GameObject.FindWithTag("MainHand");
-        if (!playerHand)
-        {Debug.LogWarning("NO HAND");}
-
         inventoryManager = FindAnyObjectByType<InventoryManager>();
+        if(!inventoryManager)
+        {
+            Debug.LogWarning("Can't find the inv manager");
+        }
+         if (!inventoryManager.playerHand)
+        {Debug.LogWarning("NO HAND found");}
     }
     public void Interact(Collider col)
     {
@@ -20,13 +21,13 @@ public class PickUp : MonoBehaviour, IInteractable
         //  Disble rendering, stack, 
         //  When going out, the reverse
         //  Scroll Wheel 
-        bool canPickUp = playerHand.transform.childCount < inventoryManager.HoldingLimit;
+        bool canPickUp = inventoryManager.playerHand.transform.childCount < inventoryManager.HoldingLimit;
         
         
         if (canPickUp)
             {
-                transform.SetParent(playerHand.transform);
-                int slotsLeft = inventoryManager.HoldingLimit - playerHand.transform.childCount;
+                transform.SetParent(inventoryManager.playerHand.transform);
+                int slotsLeft = inventoryManager.HoldingLimit - inventoryManager.playerHand.transform.childCount;
                 Debug.Log("You can pick up "+ slotsLeft + " more items!");
             }
         else

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8883909245582552392}
   - component: {fileID: 176497045320325032}
   - component: {fileID: 2208747784621676825}
-  - component: {fileID: 5079624610792274139}
   - component: {fileID: 69915935151027131}
+  - component: {fileID: 7222721486076993605}
   m_Layer: 0
   m_Name: Interactable Object
   m_TagString: Untagged
@@ -92,8 +92,20 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5079624610792274139
-BoxCollider:
+--- !u!114 &69915935151027131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845501252497931896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a064930e0c6a2ee4bb977f51eb9b24bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::interactableExample
+--- !u!135 &7222721486076993605
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -111,17 +123,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.7412169
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &69915935151027131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2845501252497931896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a064930e0c6a2ee4bb977f51eb9b24bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::interactableExample

@@ -518,17 +518,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1c04ea5f-b012-41d1-a6f7-02e963b52893"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""b3f66d0b-7751-423f-908b-a11c5bd95930"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
@@ -1077,6 +1066,34 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Upgrades"",
+            ""id"": ""8680ca69-6157-4db0-b911-e30ae39718b4"",
+            ""actions"": [
+                {
+                    ""name"": ""ViewTrash"",
+                    ""type"": ""Button"",
+                    ""id"": ""da44d20c-7a9d-4987-bf84-d94feb627292"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0728f321-afcf-4c2d-a1c5-5d1288e71ac7"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ViewTrash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1165,12 +1182,16 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Upgrades
+        m_Upgrades = asset.FindActionMap("Upgrades", throwIfNotFound: true);
+        m_Upgrades_ViewTrash = m_Upgrades.FindAction("ViewTrash", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputSystem_Actions.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Upgrades.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Upgrades.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1621,6 +1642,102 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
+    // Upgrades
+    private readonly InputActionMap m_Upgrades;
+    private List<IUpgradesActions> m_UpgradesActionsCallbackInterfaces = new List<IUpgradesActions>();
+    private readonly InputAction m_Upgrades_ViewTrash;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Upgrades".
+    /// </summary>
+    public struct UpgradesActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public UpgradesActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Upgrades/ViewTrash".
+        /// </summary>
+        public InputAction @ViewTrash => m_Wrapper.m_Upgrades_ViewTrash;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Upgrades; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="UpgradesActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(UpgradesActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="UpgradesActions" />
+        public void AddCallbacks(IUpgradesActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UpgradesActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UpgradesActionsCallbackInterfaces.Add(instance);
+            @ViewTrash.started += instance.OnViewTrash;
+            @ViewTrash.performed += instance.OnViewTrash;
+            @ViewTrash.canceled += instance.OnViewTrash;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="UpgradesActions" />
+        private void UnregisterCallbacks(IUpgradesActions instance)
+        {
+            @ViewTrash.started -= instance.OnViewTrash;
+            @ViewTrash.performed -= instance.OnViewTrash;
+            @ViewTrash.canceled -= instance.OnViewTrash;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="UpgradesActions.UnregisterCallbacks(IUpgradesActions)" />.
+        /// </summary>
+        /// <seealso cref="UpgradesActions.UnregisterCallbacks(IUpgradesActions)" />
+        public void RemoveCallbacks(IUpgradesActions instance)
+        {
+            if (m_Wrapper.m_UpgradesActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="UpgradesActions.AddCallbacks(IUpgradesActions)" />
+        /// <seealso cref="UpgradesActions.RemoveCallbacks(IUpgradesActions)" />
+        /// <seealso cref="UpgradesActions.UnregisterCallbacks(IUpgradesActions)" />
+        public void SetCallbacks(IUpgradesActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UpgradesActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UpgradesActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="UpgradesActions" /> instance referencing this action map.
+    /// </summary>
+    public UpgradesActions @Upgrades => new UpgradesActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -1834,5 +1951,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Upgrades" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="UpgradesActions.AddCallbacks(IUpgradesActions)" />
+    /// <seealso cref="UpgradesActions.RemoveCallbacks(IUpgradesActions)" />
+    public interface IUpgradesActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "ViewTrash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnViewTrash(InputAction.CallbackContext context);
     }
 }
