@@ -4,13 +4,18 @@ public class MainMenu : MonoBehaviour
 {
     SceneController sController;
 
-    void Start()
+    void Awake()
     {
         sController = FindAnyObjectByType<SceneController>();
     }
 
     public void StartGame(int sceneIndex)
     {
+        if (sController == null)
+        {
+            sController = FindAnyObjectByType<SceneController>();
+        }
+
         sController.LoadScene(sceneIndex);
     }
 

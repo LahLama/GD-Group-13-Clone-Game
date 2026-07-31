@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Forest Intergration.unity
     guid: 1bda2d51f676b2e47be4af0e17d6d2c6
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/Forest Level.unity
+    guid: c1dd5f22657803d419ee800e26ecf0c1
+  - enabled: 0
     path: Assets/Scenes/MenuTests.unity
     guid: a90952f697e5f0746b9df03211dc9d4b
   - enabled: 0
