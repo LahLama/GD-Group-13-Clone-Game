@@ -28,6 +28,13 @@ public class PickUp : MonoBehaviour, IInteractable
             {
                 transform.SetParent(inventoryManager.playerHand.transform);
                 int slotsLeft = inventoryManager.HoldingLimit - inventoryManager.playerHand.transform.childCount;
+                Rigidbody rb = GetComponent<Rigidbody>();
+                GetComponent<Collider>().enabled = false;
+                rb.useGravity = false;
+                rb.freezeRotation = true;
+                rb.freezeRotation = true;
+                rb.linearVelocity = Vector3.zero;
+                transform.position = inventoryManager.playerHand.transform.position;
                 Debug.Log("You can pick up "+ slotsLeft + " more items!");
             }
         else

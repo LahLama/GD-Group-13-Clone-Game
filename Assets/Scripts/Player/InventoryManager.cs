@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-     public int HoldingLimit = 2;  
+     public int HoldingLimit = 2;
+     
      
     public GameObject playerHand; 
 

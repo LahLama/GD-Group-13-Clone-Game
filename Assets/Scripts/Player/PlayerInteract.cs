@@ -6,7 +6,7 @@ public class PlayerInteract : MonoBehaviour
     public IInteractable interactable;
     bool interactInput;
 
-    public GameObject mainHand;
+    Camera mainCam;
 
     InputSystem_Actions inputActions;
     public RectTransform reticle;
@@ -51,7 +51,8 @@ public class PlayerInteract : MonoBehaviour
         {
             {
                 foreach (var script in hit.collider.GetComponents<IInteractable>())
-                {
+                { 
+                    Debug.Log(hit.collider);
                     if (script != null)
                         script.Interact(hit.collider);
 
