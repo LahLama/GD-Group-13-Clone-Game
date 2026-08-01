@@ -14263,6 +14263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
   reticle: {fileID: 1306863199}
+  range: 3
 --- !u!114 &659615636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22076,8 +22077,8 @@ Transform:
   m_LocalScale: {x: 0.73, y: 0.73, z: 0.73}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1966859522}
   - {fileID: 2122452010}
+  - {fileID: 1966859522}
   - {fileID: 558995147}
   - {fileID: 1112357910}
   m_Father: {fileID: 0}
@@ -30484,6 +30485,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 703639341689392469, guid: 8d1264d958f92714c81f3d43e933b4b7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1112357906}
+    - targetCorrespondingSourceObject: {fileID: 9132816960489799485, guid: 8d1264d958f92714c81f3d43e933b4b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 8d1264d958f92714c81f3d43e933b4b7, type: 3}
 --- !u!1001 &1465952462
 PrefabInstance:
@@ -32880,6 +32884,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 907377276677374953, guid: 0f7b3117c02f5a34591d7757a1876e31, type: 3}
       insertIndex: -1
       addedObject: {fileID: 558995143}
+    - targetCorrespondingSourceObject: {fileID: 2677963531338271131, guid: 0f7b3117c02f5a34591d7757a1876e31, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0f7b3117c02f5a34591d7757a1876e31, type: 3}
 --- !u!4 &1562871599 stripped
 Transform:
@@ -43608,6 +43615,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4602025962161850522, guid: 3773d0ae256dc594ea12defa93a67c26, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1966859518}
+    - targetCorrespondingSourceObject: {fileID: 4416483416898116657, guid: 3773d0ae256dc594ea12defa93a67c26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 3773d0ae256dc594ea12defa93a67c26, type: 3}
 --- !u!1 &2098150932 stripped
 GameObject:
@@ -44546,11 +44556,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4228343360813323982, guid: 1a570f403ac9fbc439ef2f8f8fbaed19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.827
+      value: 0.8269998
       objectReference: {fileID: 0}
     - target: {fileID: 4228343360813323982, guid: 1a570f403ac9fbc439ef2f8f8fbaed19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12673141
+      value: 0.12673105
       objectReference: {fileID: 0}
     - target: {fileID: 4228343360813323982, guid: 1a570f403ac9fbc439ef2f8f8fbaed19, type: 3}
       propertyPath: m_LocalPosition.z
@@ -44591,6 +44601,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 933738511553406173, guid: 1a570f403ac9fbc439ef2f8f8fbaed19, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2122452006}
+    - targetCorrespondingSourceObject: {fileID: 1463664888322242641, guid: 1a570f403ac9fbc439ef2f8f8fbaed19, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1a570f403ac9fbc439ef2f8f8fbaed19, type: 3}
 --- !u!1 &2141225255
 GameObject:
