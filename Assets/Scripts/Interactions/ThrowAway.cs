@@ -67,6 +67,7 @@ public class ThrowAway : MonoBehaviour
             heldItems[0].transform.SetParent(CollectibleContainer.transform); //This calls the above function immediately, should be last call here.
 
             // Since item was removed from parent, new [0] will be the next top 
+            if (heldItems.Count> 0) 
             heldItems[0].GetComponent<MeshRenderer>().enabled = true;
 
             }

@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class PickUp : MonoBehaviour, IInteractable
@@ -27,17 +28,21 @@ public class PickUp : MonoBehaviour, IInteractable
         if (canPickUp)
             {
                 transform.SetParent(inventoryManager.playerHand.transform);
-                int slotsLeft = inventoryManager.HoldingLimit - inventoryManager.playerHand.transform.childCount;
+                int itemCount = inventoryManager.playerHand.transform.childCount;
+                int slotsLeft = inventoryManager.HoldingLimit - itemCount;
                 Rigidbody rb = GetComponent<Rigidbody>();
                 GetComponent<Collider>().enabled = false;
                 rb.useGravity = false;
                 rb.freezeRotation = true;
                 rb.freezeRotation = true;
                 rb.linearVelocity = Vector3.zero;
-                transform.position = inventoryManager.playerHand.transform.position;
+                
+
+                Vector3 handPos = inventoryManager.playerHand.transform.position;
+                transform.position = handPos ;
                 Debug.Log("You can pick up "+ slotsLeft + " more items!");
 
-                if (inventoryManager.playerHand.transform.childCount > 1)
+                if (itemCount > 1)
                 GetComponent<MeshRenderer>().enabled = false;
             }
         else
