@@ -7402,6 +7402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   HoldingLimit: 2
+  playerHand: {fileID: 0}
 --- !u!4 &1200668764
 Transform:
   m_ObjectHideFlags: 0
@@ -10744,8 +10745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37b4b3b764c34d488bfc2b49202ea51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
-  mainHand: {fileID: 1905059141}
   reticle: {fileID: 368010316}
+  range: 3
 --- !u!114 &1639813599
 MonoBehaviour:
   m_ObjectHideFlags: 0

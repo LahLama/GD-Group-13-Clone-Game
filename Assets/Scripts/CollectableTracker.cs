@@ -19,7 +19,7 @@ public class CollectableTracker : MonoBehaviour
     public void addCurrentNumber(int val)
     {
         _currentNumber = _currentNumber+ val;
-        moneyTracking.AddMoneyValue(val);
+        moneyTracking.AddMoneyValue(5);
        
     }
     public void setCurrentNumber(int val)
