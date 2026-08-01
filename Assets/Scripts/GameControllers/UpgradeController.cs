@@ -13,6 +13,7 @@ public class UpgradeController : MonoBehaviour
     [Header("Money")]
     public MoneyTracking moneyTracking;
 
+
     [Header("Upgrade Costs")]
     public int movementCost = 1;
     public int rangeCost = 1;
@@ -54,7 +55,13 @@ public class UpgradeController : MonoBehaviour
     private int bCount = 0;
 
     void Start()    // set all default costs
-    {
+    {   
+        mbText = movementPanel.GetComponentInChildren<Button>().GetComponentInChildren<TMP_Text>();
+        rbText = rangePanel.GetComponentInChildren<Button>().GetComponentInChildren<TMP_Text>();
+        cbText = carryPanel.GetComponentInChildren<Button>().GetComponentInChildren<TMP_Text>();
+        xbText = xrayPanel.GetComponentInChildren<Button>().GetComponentInChildren<TMP_Text>();
+        bbText = binPanel.GetComponentInChildren<Button>().GetComponentInChildren<TMP_Text>();
+        
         mbText.text = "R" + movementCost;
         rbText.text = "R" + rangeCost;
         cbText.text = "R" + carryCapacityCost;
@@ -115,7 +122,14 @@ public class UpgradeController : MonoBehaviour
         switch (rCount)
         {
             case 0:
-                Debug.Log(0);
+               if (money >= rangeCost)  // checks affordability
+                {
+                    moneyTracking.SubMoneyValue(rangeCost);  // subtracts upgrade cost
+                    trashVisual.trashVisualDuration += 2;
+
+                    check = true;   // upgrade completed
+                }
+
                 break;
             case 2:
                 Debug.Log(1);
@@ -126,6 +140,14 @@ public class UpgradeController : MonoBehaviour
         }
 
         if (check) rCount++;
+
+        if (check)  // if successful upgrade will increase in level and the cost
+        {
+            rCount++;
+            
+            rangeCost *= 2;
+            rbText.text = "R" + rangeCost;
+        }    
     }
 
     // Carry Capacity

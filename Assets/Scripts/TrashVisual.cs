@@ -4,7 +4,7 @@ public class TrashVisual : MonoBehaviour
 {
     InputSystem_Actions inputActions;
     bool isTrashCamOn;
-    public int trashVisualDuration = 5;
+    public int trashVisualDuration = 1;
     bool canUseTrashAgain;
     [SerializeField] Camera trashCamera;
 
