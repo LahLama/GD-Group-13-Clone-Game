@@ -28,6 +28,12 @@ public class UpgradeController : MonoBehaviour
     public GameObject xrayPanel;
     public GameObject binPanel;
 
+    [Header("Bin States")]
+    public Animator foodBin;
+    public Animator GeneralBin;
+    public Animator ContainerBin;
+    public Animator BottlesBin;
+
     // Movement
     private TMP_Text mText;
     private Button mButton;
@@ -57,16 +63,16 @@ public class UpgradeController : MonoBehaviour
     void Start()    // set all default costs
     {   
         mText = movementPanel.GetComponentInChildren<TMP_Text>();
-        rText = movementPanel.GetComponentInChildren<TMP_Text>();
-        cText = movementPanel.GetComponentInChildren<TMP_Text>();
-        xText = movementPanel.GetComponentInChildren<TMP_Text>();
-        bText = movementPanel.GetComponentInChildren<TMP_Text>();
+        rText = rangePanel.GetComponentInChildren<TMP_Text>();
+        cText = carryPanel.GetComponentInChildren<TMP_Text>();
+        xText = xrayPanel.GetComponentInChildren<TMP_Text>();
+        bText = binPanel.GetComponentInChildren<TMP_Text>();
 
         mButton = movementPanel.GetComponentInChildren<Button>();
-        rButton = movementPanel.GetComponentInChildren<Button>();
-        cButton = movementPanel.GetComponentInChildren<Button>();
-        xButton = movementPanel.GetComponentInChildren<Button>();
-        bButton = movementPanel.GetComponentInChildren<Button>();
+        rButton = rangePanel.GetComponentInChildren<Button>();
+        cButton = carryPanel.GetComponentInChildren<Button>();
+        xButton = xrayPanel.GetComponentInChildren<Button>();
+        bButton = binPanel.GetComponentInChildren<Button>();
 
         mbText = mButton.GetComponentInChildren<TMP_Text>();
         rbText = rButton.GetComponentInChildren<TMP_Text>();
@@ -94,15 +100,37 @@ public class UpgradeController : MonoBehaviour
                 if (money >= movementCost)  // checks affordability
                 {
                     moneyTracking.SubMoneyValue(movementCost);  // subtracts upgrade cost
-                    playerMovement.walkMod += 2;    // upgrade modifiers
-                    playerMovement.sprintMod += 2;
+                    playerMovement.walkMod += 1;    // upgrade modifiers
+                    playerMovement.sprintMod += 1;
+
+                    mText.text += "I";
 
                     check = true;   // upgrade completed
                 }
+                break;
+            case 1:
+                if (money >= movementCost)  
+                {
+                    moneyTracking.SubMoneyValue(movementCost); 
+                    playerMovement.walkMod += 1;    
+                    playerMovement.sprintMod += 1;
 
+                    mText.text += "I";
+
+                    check = true;  
+                }
                 break;
             case 2:
-                Debug.Log(1);
+                if (money >= movementCost)  
+                {
+                    moneyTracking.SubMoneyValue(movementCost); 
+                    playerMovement.walkMod += 2;    
+                    playerMovement.sprintMod += 2;
+
+                    mText.text += "I";
+
+                    check = true;  
+                }
                 break;
             default:
                 Debug.Log("brokey");
@@ -113,7 +141,7 @@ public class UpgradeController : MonoBehaviour
         {
             mCount++;
             
-            movementCost *= 2;
+            movementCost *= 10;
             mbText.text = "R" + movementCost;
         }    
         
@@ -134,30 +162,56 @@ public class UpgradeController : MonoBehaviour
         switch (rCount)
         {
             case 0:
-               if (money >= rangeCost)  // checks affordability
+                if (money >= rangeCost)  
                 {
-                    moneyTracking.SubMoneyValue(rangeCost);  // subtracts upgrade cost
+                    moneyTracking.SubMoneyValue(rangeCost);  
                     playerInteract.range += 1;
 
-                    check = true;   // upgrade completed
-                }
+                    rText.text += "I";
 
+                    check = true;   
+                }
+                break;
+            case 1:
+                if (money >= rangeCost)  
+                {
+                    moneyTracking.SubMoneyValue(rangeCost); 
+                    playerInteract.range += 1;
+
+                    rText.text += "I";
+
+                    check = true;  
+                }
                 break;
             case 2:
-                Debug.Log(1);
+                if (money >= rangeCost) 
+                {
+                    moneyTracking.SubMoneyValue(rangeCost);  
+                    playerInteract.range += 1;
+
+                    rText.text += "I";
+
+                    check = true;   
+                }
                 break;
             default:
                 Debug.Log("brokey");
                 break;
         }
 
-        if (check)  // if successful upgrade will increase in level and the cost
+        if (check) 
         {
             rCount++;
             
-            rangeCost *= 2;
+            rangeCost *= 3;
             rbText.text = "R" + rangeCost;
         }    
+
+        if (rCount >= 3)   
+        {
+            rbText.text = "Max";
+            rButton.interactable = false;
+        } 
     }
 
     // Carry Capacity
@@ -170,31 +224,50 @@ public class UpgradeController : MonoBehaviour
         switch (cCount)
         {
            case 0:
-               if (money >= carryCapacityCost)  // checks affordability
+                if (money >= carryCapacityCost) 
                 {
-                    moneyTracking.SubMoneyValue(carryCapacityCost);  // subtracts upgrade cost
+                    moneyTracking.SubMoneyValue(carryCapacityCost); 
                     inventoryManager.HoldingLimit += 1;
 
-                    check = true;   // upgrade completed
+                    check = true;   
+                }
+                break;
+            case 1:
+                if (money >= carryCapacityCost) 
+                {
+                    moneyTracking.SubMoneyValue(carryCapacityCost); 
+                    inventoryManager.HoldingLimit += 2;
+
+                    check = true;   
                 }
                 break;
             case 2:
-                Debug.Log(1);
+                if (money >= carryCapacityCost) 
+                {
+                    moneyTracking.SubMoneyValue(carryCapacityCost); 
+                    inventoryManager.HoldingLimit += 3;
+
+                    check = true;   
+                }
                 break;
             default:
                 Debug.Log("brokey");
                 break;
         }
 
-        
-
-        if (check)  // if successful upgrade will increase in level and the cost
+        if (check)  
         {
             cCount++;
             
-            carryCapacityCost *= 2;
-            cbText.text = "R" + rangeCost;
+            carryCapacityCost *= 5;
+            cbText.text = "R" + carryCapacityCost;
         }   
+
+        if (cCount >= 3)    
+        {
+            cbText.text = "Max";
+            cButton.interactable = false;
+        }
     }
 
     // X-ray
@@ -207,17 +280,50 @@ public class UpgradeController : MonoBehaviour
         switch (xCount)
         {
             case 0:
-                Debug.Log(0);
+                if (money >= xrayCost) 
+                {
+                    moneyTracking.SubMoneyValue(xrayCost); 
+                    trashVisual.trashVisualDuration += 2;
+
+                    check = true;   
+                }
+                break;
+            case 1:
+                if (money >= xrayCost) 
+                {
+                    moneyTracking.SubMoneyValue(xrayCost); 
+                    trashVisual.trashVisualDuration += 2;
+
+                    check = true;   
+                }
                 break;
             case 2:
-                Debug.Log(1);
+                if (money >= xrayCost) 
+                {
+                    moneyTracking.SubMoneyValue(xrayCost); 
+                    trashVisual.trashVisualDuration += 5;
+
+                    check = true;   
+                }
                 break;
             default:
                 Debug.Log("brokey");
                 break;
         }
 
-        if (check) xCount++;
+        if (check)  
+        {
+            xCount++;
+            
+            xrayCost *= 3;
+            xbText.text = "R" + xrayCost;
+        }   
+
+        if (xCount >= 3)    
+        {
+            xbText.text = "Max";
+            xButton.interactable = false;
+        }
     }
 
     // Bin Unlock
@@ -230,16 +336,49 @@ public class UpgradeController : MonoBehaviour
         switch (bCount)
         {
             case 0:
-                Debug.Log(0);
+                if (money >= binCost) 
+                {
+                    moneyTracking.SubMoneyValue(binCost); 
+                    GeneralBin.SetBool("isOpen", true);
+
+                    check = true;   
+                }
+                break;
+            case 1:
+                if (money >= binCost) 
+                {
+                    moneyTracking.SubMoneyValue(binCost); 
+                    ContainerBin.SetBool("isOpen", true);
+
+                    check = true;   
+                }
                 break;
             case 2:
-                Debug.Log(1);
+                if (money >= binCost) 
+                {
+                    moneyTracking.SubMoneyValue(binCost); 
+                    BottlesBin.SetBool("isOpen", true);
+
+                    check = true;   
+                }
                 break;
             default:
                 Debug.Log("brokey");
                 break;
         }
 
-        if (check) bCount++;
+        if (check)  
+        {
+            bCount++;
+            
+            binCost *= 5;
+            bbText.text = "R" + binCost;
+        }   
+
+        if (bCount >= 3)    
+        {
+            bbText.text = "Max";
+            bButton.interactable = false;
+        }
     }
 }
