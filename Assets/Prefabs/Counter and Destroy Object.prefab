@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4190082689969369354}
   - component: {fileID: 4400045812215913631}
   - component: {fileID: 4785341542661589267}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Counter and Destroy Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
