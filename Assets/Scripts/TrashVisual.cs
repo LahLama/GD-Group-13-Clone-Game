@@ -26,7 +26,7 @@ public class TrashVisual : MonoBehaviour
         
         if (isTrashCamOn){
             trashCamera.gameObject.SetActive(true);
-            // Debug.Log("TRASH SHOW");
+            Debug.Log("TRASH SHOW");
             canUseTrashAgain = false;
             Invoke("NoTrashVisualAfterDelay",trashVisualDuration);
         }
