@@ -28,11 +28,11 @@ public class UpgradeController : MonoBehaviour
     public GameObject xrayPanel;
     public GameObject binPanel;
 
-    [Header("Bin States")]
+    [Header("Bin States")]      // perhaps grab bins instead
     public Animator foodBin;
-    public Animator GeneralBin;
-    public Animator ContainerBin;
-    public Animator BottlesBin;
+    public Animator generalBin;
+    public Animator containerBin;
+    public Animator bottlesBin;
 
     // Movement
     private TMP_Text mText;
@@ -103,7 +103,7 @@ public class UpgradeController : MonoBehaviour
                     playerMovement.walkMod += 1;    // upgrade modifiers
                     playerMovement.sprintMod += 1;
 
-                    mText.text += "I";
+                    mText.text += " I";
 
                     check = true;   // upgrade completed
                 }
@@ -115,7 +115,7 @@ public class UpgradeController : MonoBehaviour
                     playerMovement.walkMod += 1;    
                     playerMovement.sprintMod += 1;
 
-                    mText.text += "I";
+                    mText.text += " I";
 
                     check = true;  
                 }
@@ -127,7 +127,7 @@ public class UpgradeController : MonoBehaviour
                     playerMovement.walkMod += 2;    
                     playerMovement.sprintMod += 2;
 
-                    mText.text += "I";
+                    mText.text += " I";
 
                     check = true;  
                 }
@@ -167,7 +167,7 @@ public class UpgradeController : MonoBehaviour
                     moneyTracking.SubMoneyValue(rangeCost);  
                     playerInteract.range += 1;
 
-                    rText.text += "I";
+                    rText.text += " I";
 
                     check = true;   
                 }
@@ -178,7 +178,7 @@ public class UpgradeController : MonoBehaviour
                     moneyTracking.SubMoneyValue(rangeCost); 
                     playerInteract.range += 1;
 
-                    rText.text += "I";
+                    rText.text += " I";
 
                     check = true;  
                 }
@@ -189,7 +189,7 @@ public class UpgradeController : MonoBehaviour
                     moneyTracking.SubMoneyValue(rangeCost);  
                     playerInteract.range += 1;
 
-                    rText.text += "I";
+                    rText.text += " I";
 
                     check = true;   
                 }
@@ -229,6 +229,8 @@ public class UpgradeController : MonoBehaviour
                     moneyTracking.SubMoneyValue(carryCapacityCost); 
                     inventoryManager.HoldingLimit += 1;
 
+                    cText.text += " I";
+
                     check = true;   
                 }
                 break;
@@ -238,6 +240,8 @@ public class UpgradeController : MonoBehaviour
                     moneyTracking.SubMoneyValue(carryCapacityCost); 
                     inventoryManager.HoldingLimit += 2;
 
+                    cText.text += " I";
+
                     check = true;   
                 }
                 break;
@@ -246,6 +250,8 @@ public class UpgradeController : MonoBehaviour
                 {
                     moneyTracking.SubMoneyValue(carryCapacityCost); 
                     inventoryManager.HoldingLimit += 3;
+
+                    cText.text += " I";
 
                     check = true;   
                 }
@@ -285,6 +291,8 @@ public class UpgradeController : MonoBehaviour
                     moneyTracking.SubMoneyValue(xrayCost); 
                     trashVisual.trashVisualDuration += 2;
 
+                    xText.text += " I";
+
                     check = true;   
                 }
                 break;
@@ -294,6 +302,8 @@ public class UpgradeController : MonoBehaviour
                     moneyTracking.SubMoneyValue(xrayCost); 
                     trashVisual.trashVisualDuration += 2;
 
+                    xText.text += " I";
+
                     check = true;   
                 }
                 break;
@@ -302,6 +312,8 @@ public class UpgradeController : MonoBehaviour
                 {
                     moneyTracking.SubMoneyValue(xrayCost); 
                     trashVisual.trashVisualDuration += 5;
+
+                    xText.text += " I";
 
                     check = true;   
                 }
@@ -327,7 +339,7 @@ public class UpgradeController : MonoBehaviour
     }
 
     // Bin Unlock
-    public void UpgradeBin()    // unlocks each bin individually
+    public void UpgradeBin()    // unlocks each bin individually    // need to unlock bins using tags
     {
         int money = moneyTracking.GetMoneyValue();
 
@@ -339,7 +351,9 @@ public class UpgradeController : MonoBehaviour
                 if (money >= binCost) 
                 {
                     moneyTracking.SubMoneyValue(binCost); 
-                    GeneralBin.SetBool("isOpen", true);
+                    generalBin.SetBool("isOpen", true);
+
+                    bText.text += " I";
 
                     check = true;   
                 }
@@ -348,7 +362,9 @@ public class UpgradeController : MonoBehaviour
                 if (money >= binCost) 
                 {
                     moneyTracking.SubMoneyValue(binCost); 
-                    ContainerBin.SetBool("isOpen", true);
+                    containerBin.SetBool("isOpen", true);
+
+                    bText.text += " I";
 
                     check = true;   
                 }
@@ -357,7 +373,9 @@ public class UpgradeController : MonoBehaviour
                 if (money >= binCost) 
                 {
                     moneyTracking.SubMoneyValue(binCost); 
-                    BottlesBin.SetBool("isOpen", true);
+                    bottlesBin.SetBool("isOpen", true);
+
+                    bText.text += " I";
 
                     check = true;   
                 }
