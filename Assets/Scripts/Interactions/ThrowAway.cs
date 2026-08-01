@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ThrowAway : MonoBehaviour
 {
@@ -48,14 +49,16 @@ public class ThrowAway : MonoBehaviour
 
         if (heldItems.Count > 0)
         {
-            isThrowing= inputActions.UI.RightClick.IsPressed();
-            if (isThrowing)
-                Debug.Log("PULLING BACK");
+            // isThrowing= inputActions.UI.RightClick.IsPressed();
+            // if (isThrowing){
+            //     // Debug.Log("PULLING BACK");
+                
+            //     }
             
             hasThrown = inputActions.UI.RightClick.WasReleasedThisFrame();
             if (hasThrown)
             {
-            Debug.Log("PUH!");
+            // Debug.Log("PUH!");
              Rigidbody rb = heldItems[0].GetComponent<Rigidbody>();
             rb.AddForce(inventoryManager.playerHand.transform.forward * throwStrength, ForceMode.Impulse);  
             rb.useGravity = true;
