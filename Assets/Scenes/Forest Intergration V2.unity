@@ -29570,8 +29570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeController
   inventoryManager: {fileID: 614124411}
-  playerMovement: {fileID: 0}
-  playerInteract: {fileID: 0}
+  playerMovement: {fileID: 888993992}
+  playerInteract: {fileID: 659615635}
   trashVisual: {fileID: 953758503}
   moneyTracking: {fileID: 1202750060}
   movementCost: 1
