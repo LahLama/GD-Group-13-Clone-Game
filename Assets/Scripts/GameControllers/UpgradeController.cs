@@ -125,7 +125,7 @@ public class UpgradeController : MonoBehaviour
                if (money >= rangeCost)  // checks affordability
                 {
                     moneyTracking.SubMoneyValue(rangeCost);  // subtracts upgrade cost
-                    trashVisual.trashVisualDuration += 2;
+                    playerInteract.range += 1;
 
                     check = true;   // upgrade completed
                 }
@@ -138,8 +138,6 @@ public class UpgradeController : MonoBehaviour
                 Debug.Log("brokey");
                 break;
         }
-
-        if (check) rCount++;
 
         if (check)  // if successful upgrade will increase in level and the cost
         {
@@ -159,8 +157,14 @@ public class UpgradeController : MonoBehaviour
 
         switch (cCount)
         {
-            case 0:
-                Debug.Log(0);
+           case 0:
+               if (money >= carryCapacityCost)  // checks affordability
+                {
+                    moneyTracking.SubMoneyValue(carryCapacityCost);  // subtracts upgrade cost
+                    inventoryManager.HoldingLimit += 1;
+
+                    check = true;   // upgrade completed
+                }
                 break;
             case 2:
                 Debug.Log(1);
@@ -170,7 +174,15 @@ public class UpgradeController : MonoBehaviour
                 break;
         }
 
-        if (check) cCount++;
+        
+
+        if (check)  // if successful upgrade will increase in level and the cost
+        {
+            cCount++;
+            
+            carryCapacityCost *= 2;
+            cbText.text = "R" + rangeCost;
+        }   
     }
 
     // X-ray

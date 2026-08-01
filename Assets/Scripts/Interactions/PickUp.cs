@@ -36,6 +36,9 @@ public class PickUp : MonoBehaviour, IInteractable
                 rb.linearVelocity = Vector3.zero;
                 transform.position = inventoryManager.playerHand.transform.position;
                 Debug.Log("You can pick up "+ slotsLeft + " more items!");
+
+                if (inventoryManager.playerHand.transform.childCount > 1)
+                GetComponent<MeshRenderer>().enabled = false;
             }
         else
         {
