@@ -10,6 +10,8 @@ public class PlayerInteract : MonoBehaviour
 
     InputSystem_Actions inputActions;
     public RectTransform reticle;
+
+    public float range = 3f;
     void Awake()
     {
         inputActions = new InputSystem_Actions();
@@ -27,7 +29,7 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 3f);
+        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range);
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
 
         // If an object has the Interact script 

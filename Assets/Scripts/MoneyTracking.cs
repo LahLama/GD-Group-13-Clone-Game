@@ -16,4 +16,15 @@ public class MoneyTracking : MonoBehaviour
         moneyNumber += val;
         moneyAmount.text  = "R"+moneyNumber;
     }
+
+    public void SubMoneyValue(int val)
+    {
+        moneyNumber -= val;
+        moneyAmount.text  = "R"+moneyNumber;
+    }
+
+    public int GetMoneyValue()
+    {
+        return moneyNumber;
+    }
 }
