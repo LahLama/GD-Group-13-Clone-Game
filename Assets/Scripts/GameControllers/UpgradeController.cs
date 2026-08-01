@@ -56,11 +56,23 @@ public class UpgradeController : MonoBehaviour
 
     void Start()    // set all default costs
     {   
-        mbText = movementPanel.GetComponentInChildren<Button>().GetComponentInChildren<TMP_Text>();
-        rbText = rangePanel.GetComponentInChildren<Button>().GetComponentInChildren<TMP_Text>();
-        cbText = carryPanel.GetComponentInChildren<Button>().GetComponentInChildren<TMP_Text>();
-        xbText = xrayPanel.GetComponentInChildren<Button>().GetComponentInChildren<TMP_Text>();
-        bbText = binPanel.GetComponentInChildren<Button>().GetComponentInChildren<TMP_Text>();
+        mText = movementPanel.GetComponentInChildren<TMP_Text>();
+        rText = movementPanel.GetComponentInChildren<TMP_Text>();
+        cText = movementPanel.GetComponentInChildren<TMP_Text>();
+        xText = movementPanel.GetComponentInChildren<TMP_Text>();
+        bText = movementPanel.GetComponentInChildren<TMP_Text>();
+
+        mButton = movementPanel.GetComponentInChildren<Button>();
+        rButton = movementPanel.GetComponentInChildren<Button>();
+        cButton = movementPanel.GetComponentInChildren<Button>();
+        xButton = movementPanel.GetComponentInChildren<Button>();
+        bButton = movementPanel.GetComponentInChildren<Button>();
+
+        mbText = mButton.GetComponentInChildren<TMP_Text>();
+        rbText = rButton.GetComponentInChildren<TMP_Text>();
+        cbText = cButton.GetComponentInChildren<TMP_Text>();
+        xbText = xButton.GetComponentInChildren<TMP_Text>();
+        bbText = bButton.GetComponentInChildren<TMP_Text>();
         
         mbText.text = "R" + movementCost;
         rbText.text = "R" + rangeCost;
