@@ -29628,10 +29628,10 @@ MonoBehaviour:
   carryPanel: {fileID: 2082216039}
   xrayPanel: {fileID: 1038788473}
   binPanel: {fileID: 340208624}
-  foodBin: {fileID: 1112357914}
-  GeneralBin: {fileID: 2122452014}
-  ContainerBin: {fileID: 558995151}
-  BottlesBin: {fileID: 1966859526}
+  foodBin: {fileID: 1112357905}
+  generalBin: {fileID: 2122452005}
+  containerBin: {fileID: 558995142}
+  bottlesBin: {fileID: 1966859517}
 --- !u!114 &1370102864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33355,7 +33355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 907377276677374953, guid: 0f7b3117c02f5a34591d7757a1876e31, type: 3}
       propertyPath: m_TagString
-      value: Paper
+      value: LockedBin
       objectReference: {fileID: 0}
     - target: {fileID: 4237041775145595386, guid: 0f7b3117c02f5a34591d7757a1876e31, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44250,7 +44250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4602025962161850522, guid: 3773d0ae256dc594ea12defa93a67c26, type: 3}
       propertyPath: m_TagString
-      value: Plastic
+      value: LockedBin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45092,7 +45092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 933738511553406173, guid: 1a570f403ac9fbc439ef2f8f8fbaed19, type: 3}
       propertyPath: m_TagString
-      value: GeneralWaste
+      value: LockedBin
       objectReference: {fileID: 0}
     - target: {fileID: 4228343360813323982, guid: 1a570f403ac9fbc439ef2f8f8fbaed19, type: 3}
       propertyPath: m_LocalPosition.x

@@ -28,11 +28,11 @@ public class UpgradeController : MonoBehaviour
     public GameObject xrayPanel;
     public GameObject binPanel;
 
-    [Header("Bin States")]      // perhaps grab bins instead
-    public Animator foodBin;
-    public Animator generalBin;
-    public Animator containerBin;
-    public Animator bottlesBin;
+    [Header("Bins")]
+    public GameObject foodBin;
+    public GameObject generalBin;
+    public GameObject containerBin;
+    public GameObject bottlesBin;
 
     // Movement
     private TMP_Text mText;
@@ -60,6 +60,11 @@ public class UpgradeController : MonoBehaviour
     private TMP_Text bbText;
     private int bCount = 0;
 
+    private Animator fbAnim;
+    private Animator gbAnim;
+    private Animator cbAnim;
+    private Animator bbAnim;
+
     void Start()    // set all default costs
     {   
         mText = movementPanel.GetComponentInChildren<TMP_Text>();
@@ -85,6 +90,11 @@ public class UpgradeController : MonoBehaviour
         cbText.text = "R" + carryCapacityCost;
         xbText.text = "R" + xrayCost;
         bbText.text = "R" + binCost;
+
+        fbAnim = foodBin.GetComponent<Animator>();
+        gbAnim = generalBin.GetComponent<Animator>();
+        cbAnim = containerBin.GetComponent<Animator>();
+        bbAnim = bottlesBin.GetComponent<Animator>();
     }
 
     // Movement
@@ -351,7 +361,8 @@ public class UpgradeController : MonoBehaviour
                 if (money >= binCost) 
                 {
                     moneyTracking.SubMoneyValue(binCost); 
-                    generalBin.SetBool("isOpen", true);
+                    gbAnim.SetBool("isOpen", true);
+                    generalBin.tag = "GeneralWaste";
 
                     bText.text += " I";
 
@@ -362,7 +373,8 @@ public class UpgradeController : MonoBehaviour
                 if (money >= binCost) 
                 {
                     moneyTracking.SubMoneyValue(binCost); 
-                    containerBin.SetBool("isOpen", true);
+                    cbAnim.SetBool("isOpen", true);
+                    containerBin.tag = "Paper";
 
                     bText.text += " I";
 
@@ -373,7 +385,8 @@ public class UpgradeController : MonoBehaviour
                 if (money >= binCost) 
                 {
                     moneyTracking.SubMoneyValue(binCost); 
-                    bottlesBin.SetBool("isOpen", true);
+                    bbAnim.SetBool("isOpen", true);
+                    bottlesBin.tag = "Plastic";
 
                     bText.text += " I";
 
